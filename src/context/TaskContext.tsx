@@ -63,7 +63,7 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
         const parsed = JSON.parse(saved);
         if (parsed.dailyGoal) return parsed.dailyGoal;
       }
-    } catch {}
+    } catch { }
     return 1; // 1 task per day default
   });
 
@@ -71,7 +71,7 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       const saved = localStorage.getItem(STORAGE_KEY_BEST_STREAK);
       if (saved) return parseInt(saved, 10);
-    } catch {}
+    } catch { }
     return 0;
   });
 
@@ -80,7 +80,7 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const saved = localStorage.getItem('theme');
       if (saved === 'dark' || saved === 'light') return saved;
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
-    } catch {}
+    } catch { }
     return 'light';
   });
 
@@ -101,7 +101,7 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
   useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEY_SETTINGS, JSON.stringify({ dailyGoal }));
-    } catch {}
+    } catch { }
   }, [dailyGoal]);
 
   // Apply theme to html root
